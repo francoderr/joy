@@ -2,8 +2,8 @@ import ProductModel from "../models/Product.js";
 
 
 export const createProduct = async (req, res) => {
-    console.log('req.body')
-    console.log(req.body)
+    // console.log('req.body')
+    // console.log(req.body)
     let { title, description, price } = req.body;
     let image = req.body.image
 

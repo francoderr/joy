@@ -6,7 +6,7 @@
     <title>Kairo Shoes</title>
     <style>
       :root {
-        --theme-color: #008600;
+        --theme-color: #D2649A;
       }
 
       body {
@@ -45,9 +45,9 @@
 
       .sidebar {
         display: flex;
-        background-color: #333;
+        background-color: var(--theme-color);
         padding: 10px;
-        width: 100%;
+        width: 25%;
         justify-content: space-around;
       }
 
@@ -56,15 +56,21 @@
         list-style-type: none;
         padding: 0;
         margin: 0;
+        width: 100%;
+        justify-content: space-around;
       }
 
       .sidebar ul li {
         margin: 0 15px;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
       }
 
       .sidebar ul li a {
         text-decoration: none;
         color: white;
+        font-weight: bold;
       }
 
       main {
@@ -136,6 +142,7 @@
       }
 
       .prods {
+        margin-top: 30px;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 20px;
@@ -237,7 +244,7 @@
       .modal-content button:hover {
         background-color: #005c00;
       }
-      
+
       .logout-button {
         background-color: black;
         color: white;
@@ -252,13 +259,28 @@
       .logout-button:hover {
         background-color: #e5533c;
       }
+
+      .create-product-button {
+        background-color: var(--theme-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+
+      .create-product-button:hover {
+        background-color: #00C9B6;
+      }
     </style>
   </head>
   <body>
     <header>
       <div class="headerDiv">
         <button id="toggleSidebar">☰</button>
-        <h1>Kairo Shoe Manufacturing</h1>
+        <h1>Kairo Shoes</h1>
       </div>
       <a href="/logout"><button class="logout-button">Logout</button></a>
     </header>
@@ -267,13 +289,15 @@
         <ul>
           <li><a href="/dashboard">Home</a></li>
           <li><a href="/users">Users</a></li>
-          <li><a href="/products">Products</a></li>
+          <li style="background-color: black; width: 100px; text-align: center">
+            <a href="/products">Products</a>
+          </li>
         </ul>
       </nav>
       <main>
         <div class="mainHeader">
           <h2>Products</h2>
-          <a href="/createProd"><button>Create Product</button></a>
+          <a href="/createProd"><button class="create-product-button">Create Product</button></a>
         </div>
         <div class="prods">
           <!-- Products will be displayed here -->
@@ -358,7 +382,8 @@
         document.getElementById("editModal").style.display = "block";
         document.getElementById("productId").value = product._id; // Use _id if MongoDB
         document.getElementById("productTitle").value = product.title;
-        document.getElementById("productDescription").value = product.description;
+        document.getElementById("productDescription").value =
+          product.description;
         document.getElementById("productPrice").value = product.price;
       }
 
@@ -398,7 +423,9 @@
       }
 
       document.querySelector(".close").addEventListener("click", closeModal);
-      document.getElementById("saveProduct").addEventListener("click", saveProduct);
+      document
+        .getElementById("saveProduct")
+        .addEventListener("click", saveProduct);
 
       // Fetch products when the page loads
       fetchProducts();

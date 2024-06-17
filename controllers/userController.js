@@ -87,7 +87,7 @@ export const editUser = async (req, res) => {
   const userId = req.body.userId
   const { username, email, password } = req.body;
 
-  console.log(req.body)
+  // console.log(req.body)
 
   if (!userId) {
       return res.status(400).json({

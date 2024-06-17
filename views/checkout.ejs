@@ -6,7 +6,7 @@
   <title>Kairo Shoes</title>
   <style>
     :root {
-      --theme-color: #008600;
+      --theme-color: #D2649A;
     }
 
     body {
@@ -44,28 +44,33 @@
     }
 
     .sidebar {
-      display: flex;
-      background-color: #333;
-      padding: 10px;
-      width: 100%;
-      justify-content: space-around;
-    }
+        display: flex;
+        background-color: var(--theme-color);
+        padding: 10px;
+        width: 25%;
+      }
 
-    .sidebar ul {
-      display: flex;
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
+      .sidebar ul {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        justify-content: space-around;
+      }
 
-    .sidebar ul li {
-      margin: 0 15px;
-    }
+      .sidebar ul li {
+        margin: 0 15px;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+      }
 
-    .sidebar ul li a {
-      text-decoration: none;
-      color: white;
-    }
+      .sidebar ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+      }
 
     main {
       flex: 1;
@@ -147,7 +152,7 @@
   <header>
     <div class="headerDiv">
       <button id="toggleSidebar">☰</button>
-      <h1>Kairo Shoe Manufacturing</h1>
+      <h1>Kairo Shoes</h1>
     </div>
     <a href="/logout"><button class="logout-button">Logout</button></a>
   </header>
@@ -156,11 +161,12 @@
       <ul>
         <li><a href="/dashboard">Home</a></li>
         <li><a href="/myCart">My Cart</a></li>
-        <li><a href="/users">admin</a></li>
+        <li><a href="/admin">Admin</a></li>
       </ul>
     </nav>
     <main>
       <div class="pay">
+        <h1>Checkout</h1>
         <div class="pay-summary" id="total-price"></div>
         <input type="text" id="phone" placeholder="Enter your phone number" />
         <button id="payBtn">Pay</button>

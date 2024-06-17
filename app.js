@@ -82,7 +82,7 @@ app.get("/dashboard", isAuthenticated, (req, res) => {
 
 app.get("/users", isAdmin, (req, res) => {
   res.render("users", { user: req.user });
-  console.log(req.user)
+  // console.log(req.user)
 });
 
 app.get("/editUzer/:userId", isAdmin, (req, res) => {
@@ -107,6 +107,10 @@ app.get("/checkout/:totalPrice?", isAuthenticated, (req, res) => {
 
 app.get("/not-authorized", (req, res) => {
   res.render("not-authorized");
+});
+
+app.get("/admin", isAdmin, (req, res) => {
+  res.render("admin");
 });
 
 app.get("/logout", (req, res) => {

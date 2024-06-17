@@ -6,7 +6,7 @@
     <title>Kairo Shoes</title>
     <style>
       :root {
-        --theme-color: #0056b3;
+        --theme-color: #D2649A;
       }
 
       body {
@@ -45,10 +45,9 @@
 
       .sidebar {
         display: flex;
-        background-color: #333;
+        background-color: var(--theme-color);
         padding: 10px;
-        width: 100%;
-        justify-content: space-around;
+        width: 25%;
       }
 
       .sidebar ul {
@@ -56,15 +55,21 @@
         list-style-type: none;
         padding: 0;
         margin: 0;
+        width: 100%;
+        justify-content: space-around;
       }
 
       .sidebar ul li {
         margin: 0 15px;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
       }
 
       .sidebar ul li a {
         text-decoration: none;
         color: white;
+        font-weight: bold;
       }
 
       main {
@@ -93,7 +98,7 @@
       }
 
       .logout-button {
-        background-color: grey;
+        background-color: black;
         color: white;
         border: none;
         padding: 10px 20px;
@@ -171,20 +176,18 @@
     <header>
       <div class="headerDiv">
         <button id="toggleSidebar">☰</button>
-        <h1>Kairo Shoe Manufacturing</h1>
+        <h1>Kairo Shoes</h1>
       </div>
-      <a href="/logout">
-        <button class="logout-button">
-          <i class="fa-solid fa-right-from-bracket"></i>
-        </button></a
-      >
+      <a href="/logout"><button class="logout-button">Logout</button></a>
     </header>
     <div class="container">
       <nav id="sidebar" class="sidebar">
         <ul>
-          <li><a href="/dashboard">Home</a></li>
+        <li style="background-color: black; width: 100px; text-align: center;">
+            <a href="/dashboard">Home</a>
+          </li>        
           <li><a href="/myCart">My Cart</a></li>
-          <li><a href="/users">admin</a></li>
+          <li><a href="/admin">Admin</a></li>
         </ul>
       </nav>
       <main>

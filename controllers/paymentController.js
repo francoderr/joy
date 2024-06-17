@@ -3,8 +3,8 @@ import axios from "axios";
 let token;
 
 export const createToken = async (req, res, next) => {
-  console.log("req.body");
-  console.log(req.body);
+  // console.log("req.body");
+  // console.log(req.body);
   try {
     // const secret = process.env.secret
     const secret =
@@ -43,8 +43,8 @@ export const createToken = async (req, res, next) => {
 };
 
 export const stkPush = async (req, res) => {
-  console.log("req.body in second");
-  console.log(req.body);
+  // console.log("req.body in second");
+  // console.log(req.body);
   const shortCode = 174379;
   const phone = req.body.phone.substring(1);
   const amount = req.body.amount;
