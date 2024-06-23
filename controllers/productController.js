@@ -93,3 +93,33 @@ export const listProducts = async (req, res) => {
         });
     }
 };
+
+export const deleteProduct = async (req, res) => {
+    let productId = req.body.productId;
+
+    if (!productId) {
+        return res.status(400).json({
+            Status: "Failed",
+            message: "Product ID is required!",
+        });
+    }
+
+    try {
+        const deletedProduct = await ProductModel.findByIdAndDelete(productId);
+
+        if (!deletedProduct) {
+            return res.status(404).json({
+                Status: "Failed",
+                message: "Product not found!",
+            });
+        }
+
+        res.status(200).json({
+            Status: "Success",
+            message: "Product deleted successfully!",
+            product: deletedProduct,
+        });
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+};

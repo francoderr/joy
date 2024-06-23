@@ -1,7 +1,7 @@
 import express from 'express'
 
 import { editUser, getUsers, login, signUp } from '../controllers/userController.js'
-import { createProduct, editProduct, listProducts } from '../controllers/productController.js'
+import { createProduct, deleteProduct, editProduct, listProducts } from '../controllers/productController.js'
 import { addToCart, getCartItems, makeOrder, removeFromCart } from '../controllers/cartController.js'
 import { isAuthenticated, isAdmin } from "../middlewares/auth.js";
 import { createToken, stkPush } from '../controllers/paymentController.js';
@@ -20,4 +20,5 @@ router.get('/getCartItems', isAuthenticated, getCartItems)
 router.post('/removeFromCart', removeFromCart)
 router.post('/makeOrder', makeOrder)
 router.post('/stkPush', createToken, stkPush)
+router.post('/deleteProduct', deleteProduct)
 export default router

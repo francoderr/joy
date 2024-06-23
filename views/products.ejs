@@ -274,6 +274,20 @@
       .create-product-button:hover {
         background-color: #00C9B6;
       }
+
+      .delete-button {
+        background-color: red;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        cursor: pointer;
+        margin-left: 10px;
+        border-radius: 4px;
+      }
+
+      .delete-button:hover {
+        background-color: darkred;
+      }
     </style>
   </head>
   <body>
@@ -315,6 +329,7 @@
         <textarea id="productDescription" placeholder="Description"></textarea>
         <input type="number" id="productPrice" placeholder="Price" />
         <button id="saveProduct">Save</button>
+        <button id="deleteProduct" class="delete-button">Delete</button>
       </div>
     </div>
 
@@ -399,7 +414,6 @@
           price: parseFloat(document.getElementById("productPrice").value),
         };
 
-        // Send the updated product details to the server
         fetch(`http://localhost:3000/editProduct`, {
           method: "POST",
           headers: {
@@ -410,7 +424,6 @@
           .then((response) => response.json())
           .then((data) => {
             if (data.Status === "Success") {
-              // Update the product list on success
               fetchProducts();
               closeModal();
             } else {
@@ -422,12 +435,38 @@
           });
       }
 
+      function deleteProduct() {
+        const productId = document.getElementById("productId").value;
+
+        fetch(`http://localhost:3000/deleteProduct`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({productId}),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.Status === "Success") {
+              fetchProducts();
+              closeModal();
+            } else {
+              console.error("Failed to delete product");
+            }
+          })
+          .catch((error) => {
+            console.error("Error deleting product:", error);
+          });
+      }
+
       document.querySelector(".close").addEventListener("click", closeModal);
       document
         .getElementById("saveProduct")
         .addEventListener("click", saveProduct);
+      document
+        .getElementById("deleteProduct")
+        .addEventListener("click", deleteProduct);
 
-      // Fetch products when the page loads
       fetchProducts();
     </script>
   </body>
