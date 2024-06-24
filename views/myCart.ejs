@@ -222,7 +222,7 @@
         <div class="cart-summary">
           <div class="cart-details">
             <p id="total-items">Total Items: 0</p>
-            <p id="total-price">Total Price: $0</p>
+            <p id="total-price">Total Price: ksh 0</p>
           </div>
           <button class="order-btn" onclick="placeOrder()">Order</button>
         </div>
@@ -327,7 +327,7 @@
 
           const itemPrice = document.createElement("p");
           itemPrice.classList.add("item-price");
-          itemPrice.textContent = `$${item.price}`;
+          itemPrice.textContent = `kshs. ${item.price}`;
 
           const removeBtn = document.createElement("button");
           removeBtn.classList.add("remove-btn");
